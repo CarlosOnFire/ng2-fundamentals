@@ -1,3 +1,9 @@
+Disclaimer:
+========================
+This is my Angular 2 Fundamentals course repo, it's only used for examples and exercises only.
+
+Original read me file:
+---------------------
 Angular 2 Fundamentals Course
 ========================
 This is the getting started package for the Pluralsight course on Angular 2 Fundamentals found here: http://app.pluralsight.com/courses/angular-fundamentals
