@@ -10,7 +10,7 @@
 6 silly lifecycle ng2-fundamentals-demo@1.0.0~preserver: no script for preserver, continuing
 7 info lifecycle ng2-fundamentals-demo@1.0.0~server: ng2-fundamentals-demo@1.0.0
 8 verbose lifecycle ng2-fundamentals-demo@1.0.0~server: unsafe-perm in lifecycle true
-9 verbose lifecycle ng2-fundamentals-demo@1.0.0~server: PATH: /Users/carlos/.nvm/versions/node/v6.3.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/carlos/Documents/workspaceWeb/ng2-fundamentals/node_modules/.bin:/Users/carlos/.nvm/versions/node/v6.3.0/bin:/Users/carlos/.nvm/versions/node/v6.3.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+9 verbose lifecycle ng2-fundamentals-demo@1.0.0~server: PATH: /Users/carlos/.nvm/versions/node/v6.3.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/carlos/Documents/workspaceWeb/ng2-fundamentals/node_modules/.bin:/Users/carlos/.nvm/versions/node/v6.3.0/bin:/Users/carlos/.nvm/versions/node/v6.3.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/carlos/Documents/workspaceWeb/ng2-fundamentals/node_modules/.bin:/Users/carlos/.nvm/versions/node/v6.3.0/bin:/Users/carlos/.nvm/versions/node/v6.3.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 10 verbose lifecycle ng2-fundamentals-demo@1.0.0~server: CWD: /Users/carlos/Documents/workspaceWeb/ng2-fundamentals
 11 silly lifecycle ng2-fundamentals-demo@1.0.0~server: Args: [ '-c', 'node node_modules/ng2f-server/server.js' ]
 12 silly lifecycle ng2-fundamentals-demo@1.0.0~server: Returned: code: 1  signal: null

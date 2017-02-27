@@ -3,7 +3,6 @@ import { EventService } from './shared/event.service'
 
 
 @Component({
-  selector: 'events-list',
   template: `
   <div>
     <h1>Upcoming Event Angular 2 Stuff</h1>
