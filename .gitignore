@@ -1,7 +1,5 @@
 node_modules
 typings
-/app/**/*.js
-/app/**/*.map
+.js
+.map
 .vscode/
-
-
