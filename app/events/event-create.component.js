@@ -13,6 +13,7 @@ var router_1 = require('@angular/router'); //NEED TO IMPORT ROUTER 2 NAVIGATE FR
 var EventCreateComponent = (function () {
     function EventCreateComponent(route) {
         this.route = route;
+        this.isDirty = true;
     }
     EventCreateComponent.prototype.cancelCreate = function () {
         this.route.navigate(['/events']);

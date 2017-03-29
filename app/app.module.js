@@ -16,7 +16,9 @@ var navbar_component_1 = require('./nav/navbar.component');
 var events_list_component_1 = require('./events/events-list.component');
 var event_thumbnail_component_1 = require('./events/event-thumbnail.component');
 var event_create_component_1 = require('./events/event-create.component');
+var _404_component_1 = require('./error/404.component');
 var event_service_1 = require('./events/shared/event.service');
+var event_details_activator_service_1 = require('./events/event-details/event-details-activator.service');
 var event_details_component_1 = require('./events/event-details/event-details.component');
 var routes_1 = require('./routes');
 var AppModule = (function () {
@@ -34,8 +36,17 @@ var AppModule = (function () {
                 events_list_component_1.EventListComponent,
                 event_thumbnail_component_1.EventThumbnailComponent,
                 event_details_component_1.EventDetailsComponent,
-                event_create_component_1.EventCreateComponent],
-            providers: [event_service_1.EventService],
+                event_create_component_1.EventCreateComponent,
+                _404_component_1.Error404Component],
+            providers: [
+                event_service_1.EventService,
+                event_details_activator_service_1.EventRouterActivator,
+                {
+                    //not a service.
+                    provide: 'canDeactivateCreateEvent',
+                    useValue: checkDirtyState
+                }
+            ],
             bootstrap: [events_app_component_1.EventsAppComponent]
         }), 
         __metadata('design:paramtypes', [])
@@ -43,4 +54,9 @@ var AppModule = (function () {
     return AppModule;
 }());
 exports.AppModule = AppModule;
+function checkDirtyState(component) {
+    if (component.isDirty)
+        return window.confirm('You have not saved this event, do you really wan to cancel?');
+    return true;
+}
 //# sourceMappingURL=app.module.js.map
