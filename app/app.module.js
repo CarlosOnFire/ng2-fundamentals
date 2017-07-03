@@ -17,9 +17,10 @@ var events_list_component_1 = require('./events/events-list.component');
 var event_thumbnail_component_1 = require('./events/event-thumbnail.component');
 var event_create_component_1 = require('./events/event-create.component');
 var _404_component_1 = require('./error/404.component');
+var event_details_component_1 = require('./events/event-details/event-details.component');
 var event_service_1 = require('./events/shared/event.service');
 var event_details_activator_service_1 = require('./events/event-details/event-details-activator.service');
-var event_details_component_1 = require('./events/event-details/event-details.component');
+var events_list_resolver_service_1 = require('./events/events-list-resolver.service');
 var routes_1 = require('./routes');
 var AppModule = (function () {
     function AppModule() {
@@ -41,6 +42,7 @@ var AppModule = (function () {
             providers: [
                 event_service_1.EventService,
                 event_details_activator_service_1.EventRouterActivator,
+                events_list_resolver_service_1.EventsListResolver,
                 {
                     //not a service.
                     provide: 'canDeactivateCreateEvent',

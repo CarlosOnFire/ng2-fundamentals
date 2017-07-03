@@ -10,22 +10,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var event_service_1 = require('./shared/event.service');
-var router_1 = require('@angular/router');
-var EventListComponent = (function () {
-    function EventListComponent(eventService, route) {
+var EventListResolver = (function () {
+    function EventListResolver(eventService) {
         this.eventService = eventService;
-        this.route = route;
     }
-    EventListComponent.prototype.ngOnInit = function () {
-        this.events = this.route.snapshot.data['events'];
+    EventListResolver.prototype.resolve = function () {
+        return this.eventService.getEvents().map(function (event) { return events; });
     };
-    EventListComponent = __decorate([
-        core_1.Component({
-            template: "\n  <div>\n    <h1>Upcoming Event Angular 2 Stuff</h1>\n    <hr>\n    <div class=\"row\">\n      <div class=\"col-md-6\" *ngFor=\"let eventList of events\">\n        <event-thumbnail [event]=\"eventList\"></event-thumbnail>\n      </div>\n    </div>\n  </div>\n  "
-        }), 
-        __metadata('design:paramtypes', [event_service_1.EventService, router_1.ActivatedRoute])
-    ], EventListComponent);
-    return EventListComponent;
+    EventListResolver = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [event_service_1.EventService])
+    ], EventListResolver);
+    return EventListResolver;
 }());
-exports.EventListComponent = EventListComponent;
-//# sourceMappingURL=events-list.component.js.map
+exports.EventListResolver = EventListResolver;
+//# sourceMappingURL=events-list-resolve.service.js.map

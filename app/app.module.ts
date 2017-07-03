@@ -8,10 +8,12 @@ import { EventListComponent } from './events/events-list.component'
 import { EventThumbnailComponent } from './events/event-thumbnail.component'
 import { EventCreateComponent } from './events/event-create.component'
 import { Error404Component } from './error/404.component'
+import { EventDetailsComponent } from './events/event-details/event-details.component'
 
 import { EventService } from './events/shared/event.service'
 import { EventRouterActivator } from './events/event-details/event-details-activator.service'
-import { EventDetailsComponent } from './events/event-details/event-details.component'
+import { EventsListResolver } from './events/events-list-resolver.service'
+
 import { appRoutes } from './routes'
 
 @NgModule({
@@ -30,6 +32,7 @@ import { appRoutes } from './routes'
   providers: [
     EventService,
     EventRouterActivator,
+    EventsListResolver,
     { //This is another way to declare providers, but we use it this way because we are guarding with a function and
       //not a service.
       provide: 'canDeactivateCreateEvent',
