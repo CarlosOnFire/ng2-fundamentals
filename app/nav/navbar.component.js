@@ -16,6 +16,7 @@ var NavbarComponent = (function () {
         core_1.Component({
             selector: 'navbar',
             templateUrl: 'app/nav/navbar.component.html',
+            styles: ["\n    li > a.active { color: #F97924; }\n  "]
         }), 
         __metadata('design:paramtypes', [])
     ], NavbarComponent);
