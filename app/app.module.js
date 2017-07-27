@@ -8,19 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+//ANGULAR IMPORTS
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var router_1 = require('@angular/router');
+//ALL IMPORTS FROM EVENTS FOLDER
+var index_1 = require('./events/index');
 var events_app_component_1 = require('./events-app.component');
 var navbar_component_1 = require('./nav/navbar.component');
-var events_list_component_1 = require('./events/events-list.component');
-var event_thumbnail_component_1 = require('./events/event-thumbnail.component');
-var event_create_component_1 = require('./events/event-create.component');
 var _404_component_1 = require('./error/404.component');
-var event_details_component_1 = require('./events/event-details/event-details.component');
-var event_service_1 = require('./events/shared/event.service');
-var event_details_activator_service_1 = require('./events/event-details/event-details-activator.service');
-var events_list_resolver_service_1 = require('./events/events-list-resolver.service');
 var routes_1 = require('./routes');
 var AppModule = (function () {
     function AppModule() {
@@ -34,15 +30,15 @@ var AppModule = (function () {
             declarations: [
                 events_app_component_1.EventsAppComponent,
                 navbar_component_1.NavbarComponent,
-                events_list_component_1.EventListComponent,
-                event_thumbnail_component_1.EventThumbnailComponent,
-                event_details_component_1.EventDetailsComponent,
-                event_create_component_1.EventCreateComponent,
+                index_1.EventListComponent,
+                index_1.EventThumbnailComponent,
+                index_1.EventDetailsComponent,
+                index_1.EventCreateComponent,
                 _404_component_1.Error404Component],
             providers: [
-                event_service_1.EventService,
-                event_details_activator_service_1.EventRouterActivator,
-                events_list_resolver_service_1.EventsListResolver,
+                index_1.EventService,
+                index_1.EventRouterActivator,
+                index_1.EventsListResolver,
                 {
                     //not a service.
                     provide: 'canDeactivateCreateEvent',
