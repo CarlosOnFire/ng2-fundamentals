@@ -9,14 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var ProfileComponent = (function () {
-    function ProfileComponent() {
+    function ProfileComponent(route) {
+        this.route = route;
+        this.isDirty = true;
     }
+    ProfileComponent.prototype.cancelEditProfile = function () {
+        this.route.navigate(['/events']);
+    };
     ProfileComponent = __decorate([
         core_1.Component({
-            template: "\n    <h1>Edit Your Profile</h1>\n    <hr>\n    <div class=\"col-md-6\">\n      <h3>[Edit profile form will go here]</h3>\n      <br />\n      <br />\n      <button type=\"submit\" class=\"btn btn-primary\">Save</button>\n      <button type=\"button\" class=\"btn btn-default\">Cancel</button>\n    </div>\n  ",
+            template: "\n    <h1>Edit Your Profile</h1>\n    <hr>\n    <div class=\"col-md-6\">\n      <h3>[Edit profile form will go here]</h3>\n      <br>\n      <br>\n      <button type=\"submit\" class=\"btn btn-primary\">Save</button>\n      <button type=\"button\" class=\"btn btn-default\" (click)=\"cancelEditProfile()\">Cancel</button>\n    </div>\n  ",
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router])
     ], ProfileComponent);
     return ProfileComponent;
 }());

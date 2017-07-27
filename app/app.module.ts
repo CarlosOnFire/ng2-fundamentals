@@ -18,6 +18,7 @@ import { EventsAppComponent } from './events-app.component'
 import { NavbarComponent } from './nav/navbar.component'
 import { Error404Component } from './error/404.component'
 import { appRoutes } from './routes'
+import { ProfileComponent } from "./user/profile.component";
 
 @NgModule({
   imports: [
@@ -39,7 +40,7 @@ import { appRoutes } from './routes'
     { //This is another way to declare providers, but we use it this way because we are guarding with a function and
       //not a service.
       provide: 'canDeactivateCreateEvent',
-      useValue: checkDirtyState
+      useValue: checkDirtyStateCreateEvent
     }
   ],
   bootstrap: [EventsAppComponent]
@@ -49,8 +50,10 @@ export class AppModule {
 
 }
 
-function checkDirtyState(component:EventCreateComponent){
+function checkDirtyStateCreateEvent(component:EventCreateComponent){
   if(component.isDirty)
-    return window.confirm('You have not saved this event, do you really wan to cancel?')
+    return window.confirm('You have not saved this event, do you really want to cancel?')
   return true
 }
+
+

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import { Router } from '@angular/router'
 
 @Component({
   template: `
@@ -6,13 +7,23 @@ import { Component } from '@angular/core'
     <hr>
     <div class="col-md-6">
       <h3>[Edit profile form will go here]</h3>
-      <br />
-      <br />
+      <br>
+      <br>
       <button type="submit" class="btn btn-primary">Save</button>
-      <button type="button" class="btn btn-default">Cancel</button>
+      <button type="button" class="btn btn-default" (click)="cancelEditProfile()">Cancel</button>
     </div>
   `,
 })
+
 export class ProfileComponent {
+  isDirty:boolean = true
+
+  constructor(private route:Router){
+
+  }
+
+  cancelEditProfile(){
+        this.route.navigate(['/events'])
+  }
        
 }

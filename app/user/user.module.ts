@@ -13,8 +13,19 @@ import { ProfileComponent } from './profile.component'
         ProfileComponent
     ],
     providers: [
-
+      {
+      provide: 'canDeactivateEditProfile',
+      useValue: checkDirtyStateEditProfile
+      }
     ]
 })
 
-export class UserModule { }
+export class UserModule {
+
+ }
+
+function checkDirtyStateEditProfile(component:ProfileComponent){
+  if(component.isDirty)
+    return window.confirm('You have not saved your changes in your profile, do you really want to cancel?')
+  return true
+}

@@ -25,11 +25,21 @@ var UserModule = (function () {
             declarations: [
                 profile_component_1.ProfileComponent
             ],
-            providers: []
+            providers: [
+                {
+                    provide: 'canDeactivateEditProfile',
+                    useValue: checkDirtyStateEditProfile
+                }
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], UserModule);
     return UserModule;
 }());
 exports.UserModule = UserModule;
+function checkDirtyStateEditProfile(component) {
+    if (component.isDirty)
+        return window.confirm('You have not saved your changes in your profile, do you really want to cancel?');
+    return true;
+}
 //# sourceMappingURL=user.module.js.map

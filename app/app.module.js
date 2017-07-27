@@ -42,7 +42,7 @@ var AppModule = (function () {
                 {
                     //not a service.
                     provide: 'canDeactivateCreateEvent',
-                    useValue: checkDirtyState
+                    useValue: checkDirtyStateCreateEvent
                 }
             ],
             bootstrap: [events_app_component_1.EventsAppComponent]
@@ -52,9 +52,9 @@ var AppModule = (function () {
     return AppModule;
 }());
 exports.AppModule = AppModule;
-function checkDirtyState(component) {
+function checkDirtyStateCreateEvent(component) {
     if (component.isDirty)
-        return window.confirm('You have not saved this event, do you really wan to cancel?');
+        return window.confirm('You have not saved this event, do you really want to cancel?');
     return true;
 }
 //# sourceMappingURL=app.module.js.map
