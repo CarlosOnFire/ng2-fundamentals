@@ -18,6 +18,7 @@ var events_app_component_1 = require('./events-app.component');
 var navbar_component_1 = require('./nav/navbar.component');
 var _404_component_1 = require('./error/404.component');
 var routes_1 = require('./routes');
+var auth_service_1 = require('./user/auth.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -39,6 +40,7 @@ var AppModule = (function () {
                 index_1.EventService,
                 index_1.EventRouterActivator,
                 index_1.EventsListResolver,
+                auth_service_1.AuthService,
                 {
                     //not a service.
                     provide: 'canDeactivateCreateEvent',

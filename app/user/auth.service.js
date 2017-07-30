@@ -9,20 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var auth_service_1 = require('../user/auth.service');
-var NavbarComponent = (function () {
-    function NavbarComponent(auth) {
-        this.auth = auth;
+var AuthService = (function () {
+    function AuthService() {
     }
-    NavbarComponent = __decorate([
-        core_1.Component({
-            selector: 'navbar',
-            templateUrl: 'app/nav/navbar.component.html',
-            styles: ["\n    li > a.active { color: #F97924; }\n  "]
-        }), 
-        __metadata('design:paramtypes', [auth_service_1.AuthService])
-    ], NavbarComponent);
-    return NavbarComponent;
+    AuthService.prototype.loginUser = function (userName, password) {
+        this.currentUser = {
+            id: 1,
+            userName: userName,
+            firstName: 'Carlos',
+            lastName: 'Barragan'
+        };
+    };
+    AuthService.prototype.isAuthenticated = function () {
+        return !!this.currentUser;
+    };
+    AuthService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], AuthService);
+    return AuthService;
 }());
-exports.NavbarComponent = NavbarComponent;
-//# sourceMappingURL=navbar.component.js.map
+exports.AuthService = AuthService;
+//# sourceMappingURL=auth.service.js.map

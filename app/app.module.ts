@@ -19,6 +19,7 @@ import { NavbarComponent } from './nav/navbar.component'
 import { Error404Component } from './error/404.component'
 import { appRoutes } from './routes'
 import { ProfileComponent } from "./user/profile.component";
+import { AuthService } from './user/auth.service'
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { ProfileComponent } from "./user/profile.component";
     EventService,
     EventRouterActivator,
     EventsListResolver,
+    AuthService,
     { //This is another way to declare providers, but we use it this way because we are guarding with a function and
       //not a service.
       provide: 'canDeactivateCreateEvent',
