@@ -23,27 +23,18 @@ var UserModule = (function () {
             imports: [
                 common_1.CommonModule,
                 forms_1.FormsModule,
+                forms_1.ReactiveFormsModule,
                 router_1.RouterModule.forChild(user_routes_1.userRoutes)
             ],
             declarations: [
                 profile_component_1.ProfileComponent,
                 login_component_1.LoginComponent
             ],
-            providers: [
-                {
-                    provide: 'canDeactivateEditProfile',
-                    useValue: checkDirtyStateEditProfile
-                }
-            ]
+            providers: []
         }), 
         __metadata('design:paramtypes', [])
     ], UserModule);
     return UserModule;
 }());
 exports.UserModule = UserModule;
-function checkDirtyStateEditProfile(component) {
-    if (component.isDirty)
-        return window.confirm('You have not saved your changes in your profile, do you really want to cancel?');
-    return true;
-}
 //# sourceMappingURL=user.module.js.map

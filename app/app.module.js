@@ -55,8 +55,10 @@ var AppModule = (function () {
 }());
 exports.AppModule = AppModule;
 function checkDirtyStateCreateEvent(component) {
-    if (component.isDirty)
+    if (component.isDirty) {
+        console.log(component.isDirty);
         return window.confirm('You have not saved this event, do you really want to cancel?');
+    }
     return true;
 }
 //# sourceMappingURL=app.module.js.map

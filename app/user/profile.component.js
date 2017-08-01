@@ -10,19 +10,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var forms_1 = require('@angular/forms');
+var auth_service_1 = require('./auth.service');
 var ProfileComponent = (function () {
-    function ProfileComponent(route) {
+    function ProfileComponent(route, authService) {
         this.route = route;
+        this.authService = authService;
         this.isDirty = true;
     }
     ProfileComponent.prototype.cancelEditProfile = function () {
         this.route.navigate(['/events']);
     };
+    ProfileComponent.prototype.saveProfile = function (formValues) {
+        this.authService.updateCurrentUser(formValues.firstName, formValues.lastName);
+        this.route.navigate(['/events']);
+    };
+    ProfileComponent.prototype.ngOnInit = function () {
+        var firstName = new forms_1.FormControl(this.authService.currentUser.firstName);
+        var lastName = new forms_1.FormControl(this.authService.currentUser.lastName);
+        this.profileForm = new forms_1.FormGroup({
+            firstName: firstName,
+            lastName: lastName
+        });
+    };
     ProfileComponent = __decorate([
         core_1.Component({
-            template: "\n    <h1>Edit Your Profile</h1>\n    <hr>\n    <div class=\"col-md-6\">\n      <h3>[Edit profile form will go here]</h3>\n      <br>\n      <br>\n      <button type=\"submit\" class=\"btn btn-primary\">Save</button>\n      <button type=\"button\" class=\"btn btn-default\" (click)=\"cancelEditProfile()\">Cancel</button>\n    </div>\n  ",
+            templateUrl: 'app/user/profile.component.html',
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
+        __metadata('design:paramtypes', [router_1.Router, auth_service_1.AuthService])
     ], ProfileComponent);
     return ProfileComponent;
 }());
