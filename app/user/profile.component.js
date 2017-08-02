@@ -34,7 +34,7 @@ var ProfileComponent = (function () {
         return this.lastName.valid || this.lastName.untouched;
     };
     ProfileComponent.prototype.ngOnInit = function () {
-        this.firstName = new forms_1.FormControl(this.authService.currentUser.firstName, forms_1.Validators.required);
+        this.firstName = new forms_1.FormControl(this.authService.currentUser.firstName, [forms_1.Validators.required, forms_1.Validators.pattern('[a-zA-Z].*')]);
         this.lastName = new forms_1.FormControl(this.authService.currentUser.lastName, forms_1.Validators.required);
         this.profileForm = new forms_1.FormGroup({
             firstName: this.firstName,
