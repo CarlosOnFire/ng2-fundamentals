@@ -22,20 +22,29 @@ var ProfileComponent = (function () {
         this.route.navigate(['/events']);
     };
     ProfileComponent.prototype.saveProfile = function (formValues) {
-        this.authService.updateCurrentUser(formValues.firstName, formValues.lastName);
-        this.route.navigate(['/events']);
+        if (this.profileForm.valid) {
+            this.authService.updateCurrentUser(formValues.firstName, formValues.lastName);
+            this.route.navigate(['/events']);
+        }
+    };
+    ProfileComponent.prototype.validateFirstName = function () {
+        return this.firstName.valid || this.firstName.untouched;
+    };
+    ProfileComponent.prototype.validateLastName = function () {
+        return this.lastName.valid || this.lastName.untouched;
     };
     ProfileComponent.prototype.ngOnInit = function () {
-        var firstName = new forms_1.FormControl(this.authService.currentUser.firstName);
-        var lastName = new forms_1.FormControl(this.authService.currentUser.lastName);
+        this.firstName = new forms_1.FormControl(this.authService.currentUser.firstName, forms_1.Validators.required);
+        this.lastName = new forms_1.FormControl(this.authService.currentUser.lastName, forms_1.Validators.required);
         this.profileForm = new forms_1.FormGroup({
-            firstName: firstName,
-            lastName: lastName
+            firstName: this.firstName,
+            lastName: this.lastName
         });
     };
     ProfileComponent = __decorate([
         core_1.Component({
             templateUrl: 'app/user/profile.component.html',
+            styles: ["\n    em { float:right; color:#E05C65; padding-left:10px; }\n    .error input { background-color: #E3C3C5; }\n    .error ::-webkit-input-placeholder { color: #999 }\n    .error ::-moz-placeholder { color: #999 }\n    .error :-moz-placeholder { color: #999 }\n    .error :ms-input-placeholder { color: #999 }\n  "]
         }), 
         __metadata('design:paramtypes', [router_1.Router, auth_service_1.AuthService])
     ], ProfileComponent);

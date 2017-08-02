@@ -54,7 +54,6 @@ export class AppModule {
 
 function checkDirtyStateCreateEvent(component:EventCreateComponent){
   if(component.isDirty){
-    console.log(component.isDirty)
     return window.confirm('You have not saved this event, do you really want to cancel?')
   }
   return true
