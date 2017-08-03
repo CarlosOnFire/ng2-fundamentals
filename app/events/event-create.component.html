@@ -1,3 +1,22 @@
+<!-- N O T E S 
+To create a pre-filled template based form you just only need to add to the ngModel the two way binding "Banana in a box" like this example:
+<input [(ngModel)]="evemt.name" name="name" required id="name" type="text" class="form-control" placeholder="Name of your event..." /> 
+name="name" is the bind that populates the input with values in order to edit or change somenthing, 
+whereas [(ngModel)]="event.name" is the bind to the properties to save the new data
+now you just need to add in the component ngOnInit() method in order to pass the values to the form:
+ngOnInit(){
+  this.event = {
+      name: 'event name',
+      data: 'data'
+      ...,
+      ..,
+      .,
+      etc,
+  }
+in the way the object was created to match the form or the DOM
+}
+-->
+
 <h1>New Event</h1>
 <hr>
 <div class="col-md-6">
