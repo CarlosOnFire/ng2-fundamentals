@@ -2,7 +2,7 @@
   <h3>Create Session</h3>
 </div>
 <div class="col-md-6">
-  <form [formGroup]="newSessionForm" (ngSubmit)="saveNewSession(newSessionForm.value)"  autocomplete="off">
+  <form [formGroup]="newSessionForm" (ngSubmit)="saveSession(newSessionForm.value)"  autocomplete="off">
     <div class="form-group" [ngClass]="{'error': name.invalid && name.touched}">
       <label for="name">Session Name:</label>
       <em *ngIf="name.invalid && name.touched">Required</em>
@@ -41,6 +41,6 @@
       <textarea formControlName="abstract" id="abstract" rows=3 class="form-control" placeholder="abstract..."></textarea>
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="newSessionForm.invalid">Save</button>
-    <button type="button" class="btn btn-default" (click)="cancelNewSession()">Cancel</button>
+    <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
   </form>
 </div>

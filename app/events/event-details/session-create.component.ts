@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Output, EventEmitter } from '@angular/core'
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { ISession } from "../shared/index";
 
 @Component({
+    selector: 'session-create',
     templateUrl: 'app/events/event-details/session-create.component.html',
     styles: [`
     em { float:right; color:#E05C65; padding-left:10px; }
@@ -16,6 +17,9 @@ import { ISession } from "../shared/index";
 })
 
 export class SessionCreateComponent implements OnInit {
+
+    @Output() saveNewSession = new EventEmitter()
+    @Output() cancelNewSession = new EventEmitter()
 
     constructor(private route:Router){
 
@@ -44,7 +48,7 @@ export class SessionCreateComponent implements OnInit {
         })
     }
 
-    saveNewSession(formValues){
+    saveSession(formValues){
         let session:ISession = {
             id: undefined,
             name: formValues.name,
@@ -54,11 +58,11 @@ export class SessionCreateComponent implements OnInit {
             abstract: formValues.abstract,
             voters: []
         }
-        console.log(session)
+        this.saveNewSession.emit(session)
     }
 
-    cancelNewSession(){
-        this.route.navigate(['events'])
+    cancel(){
+        this.cancelNewSession.emit();
     }
 
 }

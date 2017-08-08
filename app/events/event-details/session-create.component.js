@@ -14,6 +14,8 @@ var router_1 = require('@angular/router');
 var SessionCreateComponent = (function () {
     function SessionCreateComponent(route) {
         this.route = route;
+        this.saveNewSession = new core_1.EventEmitter();
+        this.cancelNewSession = new core_1.EventEmitter();
     }
     SessionCreateComponent.prototype.ngOnInit = function () {
         this.name = new forms_1.FormControl('', forms_1.Validators.required);
@@ -29,7 +31,7 @@ var SessionCreateComponent = (function () {
             abstract: this.abstract
         });
     };
-    SessionCreateComponent.prototype.saveNewSession = function (formValues) {
+    SessionCreateComponent.prototype.saveSession = function (formValues) {
         var session = {
             id: undefined,
             name: formValues.name,
@@ -39,13 +41,22 @@ var SessionCreateComponent = (function () {
             abstract: formValues.abstract,
             voters: []
         };
-        console.log(session);
+        this.saveNewSession.emit(session);
     };
-    SessionCreateComponent.prototype.cancelNewSession = function () {
-        this.route.navigate(['events']);
+    SessionCreateComponent.prototype.cancel = function () {
+        this.cancelNewSession.emit();
     };
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], SessionCreateComponent.prototype, "saveNewSession", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], SessionCreateComponent.prototype, "cancelNewSession", void 0);
     SessionCreateComponent = __decorate([
         core_1.Component({
+            selector: 'session-create',
             templateUrl: 'app/events/event-details/session-create.component.html',
             styles: ["\n    em { float:right; color:#E05C65; padding-left:10px; }\n    .error input, .error select, .error textarea { background-color: #E3C3C5; }\n    .error ::-webkit-input-placeholder { color: #999 }\n    .error ::-moz-placeholder { color: #999 }\n    .error :-moz-placeholder { color: #999 }\n    .error :ms-input-placeholder { color: #999 }\n    "]
         }), 
