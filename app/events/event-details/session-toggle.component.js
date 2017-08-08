@@ -16,14 +16,10 @@ var SessionToggleComponent = (function () {
     SessionToggleComponent.prototype.toggleDataSession = function () {
         this.visible = !this.visible;
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], SessionToggleComponent.prototype, "title", void 0);
     SessionToggleComponent = __decorate([
         core_1.Component({
             selector: 'session-toggle',
-            template: "\n    <div class=\"well pointable\" (click)=\"toggleDataSession()\">\n        <h4 class=\"well-title\">{{title}}</h4>\n        <ng-content *ngIf=\"visible\"></ng-content>\n    </div>\n    "
+            template: "\n    <div class=\"well pointable\" (click)=\"toggleDataSession()\">\n        <h4><ng-content select=\"[session-title]\"></ng-content></h4>\n        <ng-content *ngIf=\"visible\" select=\"[session-info]\"></ng-content>\n    </div>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], SessionToggleComponent);
