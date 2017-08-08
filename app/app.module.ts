@@ -14,7 +14,8 @@ import {
   EventRouterActivator,
   EventsListResolver,
   SessionCreateComponent,
-  SessionListComponent
+  SessionListComponent,
+  SessionToggleComponent
 } from './events/index'
 
 import { EventsAppComponent } from './events-app.component'
@@ -40,7 +41,8 @@ import { AuthService } from './user/auth.service'
     EventCreateComponent,
     Error404Component,
     SessionCreateComponent,
-    SessionListComponent
+    SessionListComponent,
+    SessionToggleComponent
   ],
   providers: [
     EventService,
