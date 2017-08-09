@@ -41,7 +41,8 @@ var AppModule = (function () {
                 _404_component_1.Error404Component,
                 index_1.SessionCreateComponent,
                 index_1.SessionListComponent,
-                index_1.SessionToggleComponent
+                index_1.SessionToggleComponent,
+                index_1.DurationPipe
             ],
             providers: [
                 index_1.EventService,

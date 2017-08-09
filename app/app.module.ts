@@ -15,7 +15,8 @@ import {
   EventsListResolver,
   SessionCreateComponent,
   SessionListComponent,
-  SessionToggleComponent
+  SessionToggleComponent,
+  DurationPipe
 } from './events/index'
 
 import { EventsAppComponent } from './events-app.component'
@@ -42,7 +43,8 @@ import { AuthService } from './user/auth.service'
     Error404Component,
     SessionCreateComponent,
     SessionListComponent,
-    SessionToggleComponent
+    SessionToggleComponent,
+    DurationPipe
   ],
   providers: [
     EventService,
