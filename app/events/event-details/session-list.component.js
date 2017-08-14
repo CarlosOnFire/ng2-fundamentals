@@ -15,6 +15,7 @@ var SessionListComponent = (function () {
     SessionListComponent.prototype.ngOnChanges = function () {
         if (this.sessions) {
             this.filterSession(this.filterBy);
+            this.sortBy === 'votes' ? this.filteredSessions.sort(sortByVotesAsc) : this.filteredSessions.sort(sortByNamesDesc);
         }
     };
     SessionListComponent.prototype.filterSession = function (filter) {
@@ -35,6 +36,10 @@ var SessionListComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', String)
     ], SessionListComponent.prototype, "filterBy", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], SessionListComponent.prototype, "sortBy", void 0);
     SessionListComponent = __decorate([
         core_1.Component({
             selector: 'session-list',
@@ -45,4 +50,15 @@ var SessionListComponent = (function () {
     return SessionListComponent;
 }());
 exports.SessionListComponent = SessionListComponent;
+function sortByVotesAsc(s1, s2) {
+    return s2.voters.length - s1.voters.length;
+}
+function sortByNamesDesc(s1, s2) {
+    if (s1.name > s2.name)
+        return 1;
+    else if (s1.name === s2.name)
+        return 0;
+    else
+        return -1;
+}
 //# sourceMappingURL=session-list.component.js.map

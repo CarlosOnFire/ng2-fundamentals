@@ -9,12 +9,14 @@ import { ISession } from '../shared/index'
 export class SessionListComponent implements OnChanges {
     @Input() sessions: ISession[]
     @Input() filterBy: string
+    @Input() sortBy: string
     filteredSessions: ISession[]
 
     ngOnChanges(){
         
         if(this.sessions){
             this.filterSession(this.filterBy)
+            this.sortBy === 'votes' ? this.filteredSessions.sort(sortByVotesAsc) : this.filteredSessions.sort(sortByNamesDesc)
         }
 
     }
@@ -30,3 +32,13 @@ export class SessionListComponent implements OnChanges {
     }
 
 }
+
+    function sortByVotesAsc(s1:ISession, s2:ISession){
+        return s2.voters.length - s1.voters.length
+    }
+
+    function sortByNamesDesc(s1:ISession, s2:ISession){
+        if(s1.name > s2.name) return 1
+            else if (s1.name === s2.name) return 0
+                else return -1
+    }
