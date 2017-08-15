@@ -10,17 +10,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var auth_service_1 = require('../user/auth.service');
+var event_service_1 = require('../events/shared/event.service');
 var NavbarComponent = (function () {
-    function NavbarComponent(auth) {
+    function NavbarComponent(auth, event) {
         this.auth = auth;
+        this.event = event;
+        this.searchTerm = "";
     }
+    NavbarComponent.prototype.searchSessions = function (searchTerm) {
+        var _this = this;
+        //We will have to subscrite to our returned Observable for asyncrounous data in the EventService 
+        //Note: This is because we are gonna get later our data with in HttpRequest instead of searching locally the sessions
+        this.event.searchSession(searchTerm).subscribe(function (sessions) {
+            _this.foundSessions = sessions;
+            console.log(_this.foundSessions);
+        });
+    };
     NavbarComponent = __decorate([
         core_1.Component({
             selector: 'navbar',
             templateUrl: 'app/nav/navbar.component.html',
             styles: ["\n    li > a.active { color: #F97924; }\n  "]
         }), 
-        __metadata('design:paramtypes', [auth_service_1.AuthService])
+        __metadata('design:paramtypes', [auth_service_1.AuthService, event_service_1.EventService])
     ], NavbarComponent);
     return NavbarComponent;
 }());

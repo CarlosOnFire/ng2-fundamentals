@@ -26,8 +26,10 @@ import { appRoutes } from './routes'
 import { ProfileComponent } from "./user/profile.component";
 import { AuthService } from './user/auth.service'
 import { TOASTR_TOKEN, Toastr } from './common/toastr.service'
+import { JQUERY_TOKEN } from './common/jQuery.service'
 
 declare let toastr: Toastr
+declare let jQuery: Object
 
 @NgModule({
   imports: [

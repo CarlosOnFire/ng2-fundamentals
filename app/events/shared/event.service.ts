@@ -1,25 +1,51 @@
-import { Injectable } from '@angular/core'
+import { Injectable, EventEmitter } from '@angular/core'
 import { Subject, Observable } from 'rxjs/RX'
-import { IEvent } from "./event.model";
+import { IEvent, ISession } from "./event.model";
 
 @Injectable()
 export class EventService{
+
   getEvents():Observable<IEvent[]> {
     let subject = new Subject<IEvent[]>()
     setTimeout(() => {subject.next(EVENTS); subject.complete();}, 100)
     return subject
   }
+
   getEvent(id:number):IEvent{
     return EVENTS.find(event => event.id === id)
   }
+
   saveNewEvent(event){  
     event.id = 999
     event.session = []
     EVENTS.push(event)
   }
+
   updateEvent(event){
     let index = EVENTS.findIndex(x => x.id = event.id)
     EVENTS[index] = event
+  }
+
+  searchSession(searchTerm:string){
+    var term = searchTerm.toLocaleLowerCase() //LowerCase our input data to avoid typos when the user is searching a session
+    var results: ISession[] = [] //Our Empty Array of ISession model to receive the filtered sessions
+
+    EVENTS.forEach(event => {
+      var matchingSessions = event.sessions.filter(session => session.name.toLocaleLowerCase().indexOf(term) > -1)
+      matchingSessions = matchingSessions.map((session:any) => {
+        session.eventId = event.id
+        return session
+      })   
+      results = results.concat(matchingSessions) 
+    })
+
+    //After filtering and getting the result array from the events data, we emit the result asyncronously for the subscription
+    //in our NavBar Component who is waiting for them in order to dislay it
+    var emitter = new EventEmitter(true)
+    setTimeout(() => {
+      emitter.emit(results)
+    }, 100)
+    return emitter
   }
 }
 

@@ -30,6 +30,25 @@ var EventService = (function () {
         var index = EVENTS.findIndex(function (x) { return x.id = event.id; });
         EVENTS[index] = event;
     };
+    EventService.prototype.searchSession = function (searchTerm) {
+        var term = searchTerm.toLocaleLowerCase(); //LowerCase our input data to avoid typos when the user is searching a session
+        var results = []; //Our Empty Array of ISession model to receive the filtered sessions
+        EVENTS.forEach(function (event) {
+            var matchingSessions = event.sessions.filter(function (session) { return session.name.toLocaleLowerCase().indexOf(term) > -1; });
+            matchingSessions = matchingSessions.map(function (session) {
+                session.eventId = event.id;
+                return session;
+            });
+            results = results.concat(matchingSessions);
+        });
+        //After filtering and getting the result array from the events data, we emit the result asyncronously for the subscription
+        //in our NavBar Component who is waiting for them in order to dislay it
+        var emitter = new core_1.EventEmitter(true);
+        setTimeout(function () {
+            emitter.emit(results);
+        }, 100);
+        return emitter;
+    };
     EventService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
