@@ -20,6 +20,7 @@ var navbar_component_1 = require('./nav/navbar.component');
 var _404_component_1 = require('./error/404.component');
 var routes_1 = require('./routes');
 var auth_service_1 = require('./user/auth.service');
+var toastr_service_1 = require('./common/toastr.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -53,6 +54,10 @@ var AppModule = (function () {
                     //not a service.
                     provide: 'canDeactivateCreateEvent',
                     useValue: checkDirtyStateCreateEvent
+                },
+                {
+                    provide: toastr_service_1.TOASTR_TOKEN,
+                    useValue: toastr
                 }
             ],
             bootstrap: [events_app_component_1.EventsAppComponent]

@@ -25,6 +25,9 @@ import { Error404Component } from './error/404.component'
 import { appRoutes } from './routes'
 import { ProfileComponent } from "./user/profile.component";
 import { AuthService } from './user/auth.service'
+import { TOASTR_TOKEN, Toastr } from './common/toastr.service'
+
+declare let toastr: Toastr
 
 @NgModule({
   imports: [
@@ -55,6 +58,10 @@ import { AuthService } from './user/auth.service'
       //not a service.
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyStateCreateEvent
+    },
+    {
+      provide: TOASTR_TOKEN,
+      useValue: toastr
     }
   ],
   bootstrap: [EventsAppComponent]

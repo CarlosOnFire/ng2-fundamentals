@@ -8,14 +8,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var forms_1 = require('@angular/forms');
 var auth_service_1 = require('./auth.service');
+var toastr_service_1 = require('../common/toastr.service');
 var ProfileComponent = (function () {
-    function ProfileComponent(route, authService) {
+    function ProfileComponent(route, authService, toastr) {
         this.route = route;
         this.authService = authService;
+        this.toastr = toastr;
         this.isDirty = true;
     }
     ProfileComponent.prototype.cancelEditProfile = function () {
@@ -25,6 +30,7 @@ var ProfileComponent = (function () {
         if (this.profileForm.valid) {
             this.authService.updateCurrentUser(formValues.firstName, formValues.lastName);
             this.route.navigate(['/events']);
+            this.toastr.success("User data changed");
         }
     };
     ProfileComponent.prototype.validateFirstName = function () {
@@ -45,8 +51,9 @@ var ProfileComponent = (function () {
         core_1.Component({
             templateUrl: 'app/user/profile.component.html',
             styles: ["\n    em { float:right; color:#E05C65; padding-left:10px; }\n    .error input { background-color: #E3C3C5; }\n    .error ::-webkit-input-placeholder { color: #999 }\n    .error ::-moz-placeholder { color: #999 }\n    .error :-moz-placeholder { color: #999 }\n    .error :ms-input-placeholder { color: #999 }\n  "]
-        }), 
-        __metadata('design:paramtypes', [router_1.Router, auth_service_1.AuthService])
+        }),
+        __param(2, core_1.Inject(toastr_service_1.TOASTR_TOKEN)), 
+        __metadata('design:paramtypes', [router_1.Router, auth_service_1.AuthService, Object])
     ], ProfileComponent);
     return ProfileComponent;
 }());
