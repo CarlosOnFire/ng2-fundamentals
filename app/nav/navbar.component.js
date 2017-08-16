@@ -23,7 +23,6 @@ var NavbarComponent = (function () {
         //Note: This is because we are gonna get later our data with in HttpRequest instead of searching locally the sessions
         this.event.searchSession(searchTerm).subscribe(function (sessions) {
             _this.foundSessions = sessions;
-            console.log(_this.foundSessions);
         });
     };
     NavbarComponent = __decorate([

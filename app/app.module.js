@@ -21,6 +21,9 @@ var _404_component_1 = require('./error/404.component');
 var routes_1 = require('./routes');
 var auth_service_1 = require('./user/auth.service');
 var toastr_service_1 = require('./common/toastr.service');
+var jQuery_service_1 = require('./common/jQuery.service');
+var simpleModal_component_1 = require('./common/simpleModal.component');
+var modalTrigger_directive_1 = require('./common/modalTrigger.directive');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -43,7 +46,9 @@ var AppModule = (function () {
                 index_1.SessionCreateComponent,
                 index_1.SessionListComponent,
                 index_1.SessionToggleComponent,
-                index_1.DurationPipe
+                index_1.DurationPipe,
+                simpleModal_component_1.SimpleModalComponent,
+                modalTrigger_directive_1.ModalTriggerDirective
             ],
             providers: [
                 index_1.EventService,
@@ -58,6 +63,10 @@ var AppModule = (function () {
                 {
                     provide: toastr_service_1.TOASTR_TOKEN,
                     useValue: toastr
+                },
+                {
+                    provide: jQuery_service_1.JQUERY_TOKEN,
+                    useValue: jQuery
                 }
             ],
             bootstrap: [events_app_component_1.EventsAppComponent]

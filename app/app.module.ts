@@ -27,6 +27,8 @@ import { ProfileComponent } from "./user/profile.component";
 import { AuthService } from './user/auth.service'
 import { TOASTR_TOKEN, Toastr } from './common/toastr.service'
 import { JQUERY_TOKEN } from './common/jQuery.service'
+import { SimpleModalComponent } from './common/simpleModal.component'
+import { ModalTriggerDirective } from './common/modalTrigger.directive'
 
 declare let toastr: Toastr
 declare let jQuery: Object
@@ -49,7 +51,9 @@ declare let jQuery: Object
     SessionCreateComponent,
     SessionListComponent,
     SessionToggleComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective
   ],
   providers: [
     EventService,
@@ -64,6 +68,10 @@ declare let jQuery: Object
     {
       provide: TOASTR_TOKEN,
       useValue: toastr
+    },
+    {
+      provide: JQUERY_TOKEN,
+      useValue: jQuery
     }
   ],
   bootstrap: [EventsAppComponent]

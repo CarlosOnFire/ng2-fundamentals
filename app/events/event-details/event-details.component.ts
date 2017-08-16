@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { EventService } from '../shared/event.service'
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Params } from '@angular/router'
 import { IEvent, ISession } from '../shared/index'
 
 @Component({
@@ -22,13 +22,21 @@ export class EventDetailsComponent {
   event:IEvent
   addMode:boolean
   filterBy: string = 'all'
+  sortBy: string = 'votes'
 
   constructor(private eventService:EventService, private route:ActivatedRoute){
 
   }
 
   ngOnInit(){
-    this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
+    //We implemented this because the last configuration was only prepared to route only once, this was because we
+    //were using snapshot instead of waiting for a Observable to receive multipe routes and refresh the EventDetailsComponent
+    this.route.params.forEach((params:Params) => {
+      this.event = this.eventService.getEvent(+params['id'])
+      this.addMode = false
+      this.filterBy = 'all'
+      this.sortBy = 'votes'
+    })
   }
 
   addSession(){

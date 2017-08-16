@@ -25,7 +25,6 @@ export class NavbarComponent {
     //Note: This is because we are gonna get later our data with in HttpRequest instead of searching locally the sessions
     this.event.searchSession(searchTerm).subscribe(sessions => {
       this.foundSessions = sessions
-      console.log(this.foundSessions)
     })
   }
 }
