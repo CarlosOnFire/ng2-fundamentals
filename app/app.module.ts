@@ -11,11 +11,13 @@ import {
   EventCreateComponent,
   EventDetailsComponent,
   EventService,
+  VotesService,
   EventRouterActivator,
   EventsListResolver,
   SessionCreateComponent,
   SessionListComponent,
   SessionToggleComponent,
+  UpvoteComponent,
   DurationPipe
 } from './events/index'
 
@@ -53,10 +55,12 @@ declare let jQuery: Object
     SessionToggleComponent,
     DurationPipe,
     SimpleModalComponent,
+    UpvoteComponent,
     ModalTriggerDirective
   ],
   providers: [
     EventService,
+    VotesService,
     EventRouterActivator,
     EventsListResolver,
     AuthService,

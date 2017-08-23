@@ -1,0 +1,11 @@
+<div class="votingWidgetContainer pointable" (click)="onClickVote()">
+    <div class="votingWidget">
+        <div class="votingButton">
+            <i [style.color]="iconColor" class="glyphicon glyphicon-heart"></i>
+            <!-- [style.color] access the css color and you can define it inside the component as a String with a @Input() set -->
+        </div>
+        <div class="bagde badge-inverse votingCount">
+            <div>{{count}}</div>
+        </div>
+    </div>
+</div>

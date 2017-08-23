@@ -9,21 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var SessionToggleComponent = (function () {
-    function SessionToggleComponent() {
-        this.visible = true;
+var VotesService = (function () {
+    function VotesService() {
     }
-    SessionToggleComponent.prototype.toggleDataSession = function () {
-        this.visible = !this.visible;
+    VotesService.prototype.userHasVoted = function (session, userName) {
+        return session.voters.some(function (voter) { return voter === userName; });
     };
-    SessionToggleComponent = __decorate([
-        core_1.Component({
-            selector: 'session-toggle',
-            template: "\n    <div class=\"pointable\" (click)=\"toggleDataSession()\">\n        <h4><ng-content select=\"[session-title]\"></ng-content></h4>\n        <ng-content *ngIf=\"visible\" select=\"[session-info]\"></ng-content>\n    </div>\n    "
-        }), 
+    VotesService.prototype.deleteVote = function (session, userName) {
+        session.voters = session.voters.filter(function (voter) { return voter !== userName; });
+    };
+    VotesService.prototype.addVote = function (session, userName) {
+        session.voters.push(userName);
+    };
+    VotesService = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], SessionToggleComponent);
-    return SessionToggleComponent;
+    ], VotesService);
+    return VotesService;
 }());
-exports.SessionToggleComponent = SessionToggleComponent;
-//# sourceMappingURL=session-toggle.component.js.map
+exports.VotesService = VotesService;
+//# sourceMappingURL=votes.service.js.map

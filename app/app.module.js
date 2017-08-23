@@ -48,10 +48,12 @@ var AppModule = (function () {
                 index_1.SessionToggleComponent,
                 index_1.DurationPipe,
                 simpleModal_component_1.SimpleModalComponent,
+                index_1.UpvoteComponent,
                 modalTrigger_directive_1.ModalTriggerDirective
             ],
             providers: [
                 index_1.EventService,
+                index_1.VotesService,
                 index_1.EventRouterActivator,
                 index_1.EventsListResolver,
                 auth_service_1.AuthService,

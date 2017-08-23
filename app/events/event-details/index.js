@@ -7,4 +7,6 @@ __export(require('./event-details.component'));
 __export(require('./session-create.component'));
 __export(require('./session-list.component'));
 __export(require('./session-toggle.component'));
+__export(require('./upvote.component'));
+__export(require('./votes.service'));
 //# sourceMappingURL=index.js.map

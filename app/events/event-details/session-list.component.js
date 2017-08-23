@@ -9,8 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var auth_service_1 = require('../../user/auth.service');
+var votes_service_1 = require('./votes.service');
 var SessionListComponent = (function () {
-    function SessionListComponent() {
+    function SessionListComponent(auth, voteService) {
+        this.auth = auth;
+        this.voteService = voteService;
     }
     SessionListComponent.prototype.ngOnChanges = function () {
         if (this.sessions) {
@@ -27,6 +31,20 @@ var SessionListComponent = (function () {
                 return session.level.toLowerCase() === filter;
             });
         }
+    };
+    SessionListComponent.prototype.toggleVote = function (session) {
+        if (this.userHasVoted(session)) {
+            this.voteService.deleteVote(session, this.auth.currentUser.userName);
+        }
+        else {
+            this.voteService.addVote(session, this.auth.currentUser.userName);
+        }
+        if (this.sortBy === 'votes') {
+            this.filteredSessions.sort(sortByVotesAsc);
+        }
+    };
+    SessionListComponent.prototype.userHasVoted = function (session) {
+        return this.voteService.userHasVoted(session, this.auth.currentUser.userName);
     };
     __decorate([
         core_1.Input(), 
@@ -45,7 +63,7 @@ var SessionListComponent = (function () {
             selector: 'session-list',
             templateUrl: 'app/events/event-details/session-list.component.html',
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [auth_service_1.AuthService, votes_service_1.VotesService])
     ], SessionListComponent);
     return SessionListComponent;
 }());
