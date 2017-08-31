@@ -18,7 +18,8 @@ import {
   SessionListComponent,
   SessionToggleComponent,
   UpvoteComponent,
-  DurationPipe
+  DurationPipe,
+  ValidateLocationDirective
 } from './events/index'
 
 import { EventsAppComponent } from './events-app.component'
@@ -56,7 +57,8 @@ declare let jQuery: Object
     DurationPipe,
     SimpleModalComponent,
     UpvoteComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    ValidateLocationDirective
   ],
   providers: [
     EventService,

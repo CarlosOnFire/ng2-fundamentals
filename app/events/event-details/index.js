@@ -9,4 +9,5 @@ __export(require('./session-list.component'));
 __export(require('./session-toggle.component'));
 __export(require('./upvote.component'));
 __export(require('./votes.service'));
+__export(require('./validateLocation.directive'));
 //# sourceMappingURL=index.js.map
