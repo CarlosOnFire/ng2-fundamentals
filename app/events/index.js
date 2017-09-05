@@ -7,5 +7,6 @@ __export(require('./event-thumbnail.component'));
 __export(require('./events-list-resolver.service'));
 __export(require('./events-list.component'));
 __export(require('./event-details/index'));
+__export(require('./event-resolver.service'));
 __export(require('./shared/index'));
 //# sourceMappingURL=index.js.map

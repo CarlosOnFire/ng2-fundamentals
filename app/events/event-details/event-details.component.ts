@@ -31,11 +31,11 @@ export class EventDetailsComponent {
   ngOnInit(){
     //We implemented this because the last configuration was only prepared to route only once, this was because we
     //were using snapshot instead of waiting for a Observable to receive multipe routes and refresh the EventDetailsComponent
-    this.route.params.forEach((params:Params) => {
-      this.event = this.eventService.getEvent(+params['id'])
-      this.addMode = false
-      this.filterBy = 'all'
-      this.sortBy = 'votes'
+    this.route.data.forEach(data => {
+        this.event = data['event']
+        this.addMode = false        
+        this.filterBy = 'all'
+        this.sortBy = 'votes'
     })
   }
 

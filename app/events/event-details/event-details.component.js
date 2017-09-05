@@ -22,8 +22,8 @@ var EventDetailsComponent = (function () {
         var _this = this;
         //We implemented this because the last configuration was only prepared to route only once, this was because we
         //were using snapshot instead of waiting for a Observable to receive multipe routes and refresh the EventDetailsComponent
-        this.route.params.forEach(function (params) {
-            _this.event = _this.eventService.getEvent(+params['id']);
+        this.route.data.forEach(function (data) {
+            _this.event = data['event'];
             _this.addMode = false;
             _this.filterBy = 'all';
             _this.sortBy = 'votes';

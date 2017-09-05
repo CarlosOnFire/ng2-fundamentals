@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser'
 import { RouterModule } from '@angular/router'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { HttpModule } from '@angular/http'
 
 //ALL IMPORTS FROM EVENTS FOLDER
 import {
@@ -12,8 +13,8 @@ import {
   EventDetailsComponent,
   EventService,
   VotesService,
-  EventRouterActivator,
   EventsListResolver,
+  EventResolver,
   SessionCreateComponent,
   SessionListComponent,
   SessionToggleComponent,
@@ -41,6 +42,7 @@ declare let jQuery: Object
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
   declarations: [
@@ -63,8 +65,8 @@ declare let jQuery: Object
   providers: [
     EventService,
     VotesService,
-    EventRouterActivator,
     EventsListResolver,
+    EventResolver,
     AuthService,
     { //This is another way to declare providers, but we use it this way because we are guarding with a function and
       //not a service.

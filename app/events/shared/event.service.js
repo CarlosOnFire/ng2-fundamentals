@@ -10,16 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var RX_1 = require('rxjs/RX');
+var http_1 = require('@angular/http');
 var EventService = (function () {
-    function EventService() {
+    function EventService(http) {
+        this.http = http;
     }
     EventService.prototype.getEvents = function () {
-        var subject = new RX_1.Subject();
-        setTimeout(function () { subject.next(EVENTS); subject.complete(); }, 100);
-        return subject;
+        //NEW HTTP REQUEST FROM LOCALHOST SERVER
+        return this.http.get('/api/events').map(function (response) {
+            return response.json();
+        }).catch(this.handleHttpError);
     };
     EventService.prototype.getEvent = function (id) {
-        return EVENTS.find(function (event) { return event.id === id; });
+        //NEW HTTP REQUEST FROM LOCALHOST SERVER
+        return this.http.get('/api/events/' + id).map(function (response) {
+            return response.json();
+        }).catch(this.handleHttpError);
     };
     EventService.prototype.saveNewEvent = function (event) {
         event.id = 999;
@@ -49,14 +55,16 @@ var EventService = (function () {
         }, 100);
         return emitter;
     };
+    EventService.prototype.handleHttpError = function (error) {
+        return RX_1.Observable.throw(error.statusText);
+    };
     EventService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], EventService);
     return EventService;
 }());
 exports.EventService = EventService;
-//36738951 TALLER HOPP BMW
 var EVENTS = [
     {
         id: 1,
